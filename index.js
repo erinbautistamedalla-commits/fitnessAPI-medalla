@@ -1,8 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
-require("dotenv").config(); // Optional: Automatically reads key-values from a .env file
+const cors = require("cors");
+require("dotenv").config(); 
 
 const app = express();
+
+app.use(cors({
+    origin: "http://localhost:5173", // Allows your Vue dev server to connect
+    methods: ["GET", "POST", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true
 
 // Global Middleware Configuration (MUST sit above routes to process JSON bodies)
 app.use(express.json());
