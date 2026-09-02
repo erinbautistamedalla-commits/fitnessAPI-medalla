@@ -20,7 +20,7 @@ exports.addWorkout = async (req, res) => {
 exports.getMyWorkouts = async (req, res) => {
     try {
         const workouts = await Workout.find({ userId: req.user.id }).sort({ dateAdded: -1 });
-        res.status(200).json({ workouts });
+        res.status(200).json(workouts);
     } catch (error) {
         res.status(500).json({ error: "Server error", message: error.message });
     }

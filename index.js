@@ -10,14 +10,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
-    origin: "http://localhost:5173", // Allows your Vue dev server to connect
+    origin: ["http://localhost:5173","https://fitnessapi-medalla.onrender.com"], 
     methods: ["GET", "POST", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
 }))
 
 // Database Connection Logic
-// Replace with your local mongo URI string if not using a system environment variable
 const dbURI = process.env.MONGODB_URI || "mongodb://localhost:27017/fitnessTracker";
 mongoose.connect(dbURI)
     .then(() => console.log("Successfully connected to MongoDB database."))
@@ -27,8 +26,8 @@ mongoose.connect(dbURI)
 const workoutRoutes = require("./routes/workout");
 const userRoutes = require("./routes/user");
 
-app.use("/workouts", workoutRoutes);
-app.use("/users", userRoutes);
+app.use("/", workoutRoutes);
+app.use("/", userRoutes);
 
 // Runtime listener activation 
 if (require.main === module) {
