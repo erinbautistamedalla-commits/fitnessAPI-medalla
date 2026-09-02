@@ -26,8 +26,8 @@ mongoose.connect(dbURI)
 const workoutRoutes = require("./routes/workout");
 const userRoutes = require("./routes/user");
 
-app.use("/", workoutRoutes);
-app.use("/", userRoutes);
+app.use("/workouts", workoutRoutes);
+app.use("/users", userRoutes);
 
 // Runtime listener activation 
 if (require.main === module) {
