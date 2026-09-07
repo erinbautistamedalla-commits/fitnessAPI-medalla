@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
-    origin: ["http://localhost:5173","https://fitnessapi-medalla.onrender.com"], 
+    origin: ["http://localhost:5173","https://fitnessapi-medalla.onrender.com","https://fitness-app-medalla.vercel.app"], 
     methods: ["GET", "POST", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
